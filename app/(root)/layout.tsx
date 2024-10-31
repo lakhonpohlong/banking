@@ -1,8 +1,10 @@
+import { auth } from "@/auth";
 import MobileNavbar from "@/components/MobileNavbar";
 import Sidebar from "@/components/Sidebar";
+import { SessionProvider } from "next-auth/react";
 import Image from "next/image.js";
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -10,7 +12,6 @@ export default function RootLayout({
     const loggedIn = { firstName: 'Lucky', lastName: 'Pohlong' };
     return (
         <main className="flex h-screen w-full font-inter">
-
             <Sidebar user={loggedIn} />
             <div className="flex size-full flex-col">
                 <div className="root-layout">
@@ -26,7 +27,6 @@ export default function RootLayout({
                 </div>
                 {children}
             </div>
-
         </main>
     );
 }

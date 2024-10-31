@@ -1,10 +1,13 @@
+'use client'
+import Social from '@/components/AuthSocial'
 import HeaderBox from '@/components/HeaderBox'
 import RightSideBar from '@/components/RightSideBar'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
+import { useCurrentUser } from '@/hooks/use-current-user'
 import React from 'react'
 
 const Home = () => {
-    const loggedIn = { firstName: 'Lucky', lastName: 'Pohlong', email: 'lakhonpohlong@gmail.com' }
+    const loggedIn = useCurrentUser()
     return (
         <section className='home'>
             <div className="home-content">
@@ -12,7 +15,7 @@ const Home = () => {
                     <HeaderBox
                         type="greeting"
                         title="welcome"
-                        user={loggedIn?.firstName || 'Guest'}
+                        user={loggedIn?.name?.split(" ")[0] || 'Guest'}
                         subtext="Access and manage your account and transactions efficiency."
                     />
                     <TotalBalanceBox
